@@ -1,0 +1,129 @@
+body{
+    margin: 20px 0px;
+    font-family: 'Share Tech Mono';
+    height: 100vh;
+}
+
+.error-login{
+    border: 2px solid rgba(255,0,0,0.4);
+}
+
+#ajax-loader{
+    background: url("http://www.aveva.com/Images/ajax-loader.gif") no-repeat scroll center center rgba(255,255,255,0.6);
+    z-index: 1000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.login-box{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box form#login-form h1{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-box form#login-form{
+    width: 80%;
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.collection{
+    border: 5px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.collection h1{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logout{
+    margin: 0px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.git-status{
+    background: white;
+    padding-left: 25px;
+    width: 200px;
+    box-shadow: 5px 5px 5px grey;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: -30px;
+    transform: translateX(-130px);
+    transition: transform 0.5s ease-in-out
+}
+
+.git-status:hover{
+    transform: translateX(0px);
+}
+
+.status-lights{
+    margin-left: 20px;
+}
+
+.status-green{
+    color: green;
+}
+
+.status-red{
+    color: red;
+}
+
+.status-off{
+    opacity: 0.3;
+}
+
+.status-on{
+    opacity: 1;
+}
+
+.new-markdown{
+    text-decoration: none;
+    color: black;
+    transition: transform 0.5s ease-in-out;
+}
+
+.new-markdown:hover{
+    transform: scale(1.2);
+    color: black;
+}
+
+.sweet-alert{
+    border-radius: 0px
+    font-family: 'Share Tech Mono';
+}
+
+.sweet-alert h2{
+    font-family: 'Share Tech Mono';
+}
+
+.sweet-alert p{
+    font-family: 'Share Tech Mono';
+}
+
+.sweet-alert button{
+    font-family: 'Share Tech Mono';
+    border-radius: 0px;
+}
+
+.file-preview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
