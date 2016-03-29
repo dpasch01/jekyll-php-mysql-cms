@@ -1,12 +1,5 @@
 <?php
-    define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT'));
-    define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
-    define('DB_PASSWORD',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
-    define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
-
-    $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-
-    define('ADMIN_ROOT', $_SERVER['DOCUMENT_ROOT']."/admin/");
+    require_once 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +18,8 @@
     <body>
         <div id="ajax-loader" class="hidden"></div>
         <?php
-            include(ADMIN_ROOT.'details.php');
-            include(ADMIN_ROOT.'create.php');
+            require(ADMIN_ROOT.'details.php');
+            require(ADMIN_ROOT.'create.php');
             session_start();
 
             $user_check = $_SESSION['login_user'];
@@ -51,7 +44,6 @@
         </div>
 
         <?php
-            require ADMIN_ROOT.'_/composer/autoload.php';
             $markdowns=[];
             $parser = new Mni\FrontYAML\Parser();
 

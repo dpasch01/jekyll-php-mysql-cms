@@ -1,17 +1,7 @@
 <?php
     session_start();
 
-    define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT'));
-    define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
-    define('DB_PASSWORD',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
-    define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
-
-    $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-
-    if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-    }
+    require_once '../config.php';
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -38,8 +28,5 @@
         }else{
             echo "Username error.";
         }
-
-
     }
-
 ?>
