@@ -1,2 +1,4 @@
 admin/_/lib
 admin/_/composer
+admin/.env
+admin/system.conf
