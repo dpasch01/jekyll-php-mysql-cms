@@ -5,8 +5,11 @@ $dotenv = new Dotenv\Dotenv(__DIR__);
 $dotenv->load();
 
 $db_host =  getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT');
-if ($db_host == ':'){
+if ($db_host == ':'){ //not using openshift
   $db_host = getenv('MY_DB_HOST');
+  define('ADMIN_ROOT', dirname(__FILE__) . "/");
+} else { //using openshift
+  define('ADMIN_ROOT', $_SERVER['DOCUMENT_ROOT']."/admin/");
 }
 
 $db_user = getenv('OPENSHIFT_MYSQL_DB_USERNAME') ?: getenv('MY_DB_USER');
@@ -17,8 +20,6 @@ define('DB_HOST',$db_host);
 define('DB_USER',$db_user);
 define('DB_PASSWORD',$db_password);
 define('DB_NAME',$db_name);
-
-define('ADMIN_ROOT', dirname(__FILE__) . "/");
 
 $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
