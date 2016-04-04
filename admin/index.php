@@ -1,12 +1,11 @@
 <?php
-    define('DB_HOST', getenv('OPENSHIFT_MYSQL_DB_HOST') . ':' . getenv('OPENSHIFT_MYSQL_DB_PORT'));
-    define('DB_USER',getenv('OPENSHIFT_MYSQL_DB_USERNAME'));
-    define('DB_PASSWORD',getenv('OPENSHIFT_MYSQL_DB_PASSWORD'));
-    define('DB_NAME',getenv('OPENSHIFT_GEAR_NAME'));
+    require_once 'config.php';
 
-    $db = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+    session_start();
 
-    define('ADMIN_ROOT', $_SERVER['DOCUMENT_ROOT']."/admin/");
+    if(!isset($_SESSION['login_user'])){
+        header("location: login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,9 +24,9 @@
     <body>
         <div id="ajax-loader" class="hidden"></div>
         <?php
-            include(ADMIN_ROOT.'details.php');
-            include(ADMIN_ROOT.'create.php');
-            session_start();
+            require(ADMIN_ROOT.'details.php');
+            require(ADMIN_ROOT.'create.php');
+
 
             $user_check = $_SESSION['login_user'];
 
@@ -35,10 +34,6 @@
             $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
 
             $login_session = $row['admin_email'];
-
-            if(!isset($_SESSION['login_user'])){
-                header("location: login.php");
-            }
         ?>
 
         <div class="git-status">
@@ -51,7 +46,6 @@
         </div>
 
         <?php
-            require ADMIN_ROOT.'_/composer/autoload.php';
             $markdowns=[];
             $parser = new Mni\FrontYAML\Parser();
 

@@ -1,8 +1,9 @@
-{    
+{
     "config": {
         "vendor-dir": "_/composer/"
     },
     "require": {
         "mnapoli/front-yaml": "^1.5"
+        , "vlucas/phpdotenv" : "2.2.0"
     }
 }
