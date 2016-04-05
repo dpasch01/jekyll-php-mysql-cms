@@ -1,7 +1,8 @@
+*
 */
 
-!admin/
-!.openshift/
+!admin/*
+!.openshift/*
 !README.md
 !LICENSE
 
