@@ -6,7 +6,7 @@
 
     fwrite($markdown, "---\n");
     foreach($_POST as $key => $value){
-        if((strcmp($key,'image')!=0) && (strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
+        if((strcmp($key,'current-image')!=0) && (strcmp($key,'image')!=0) && (strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
             fwrite($markdown, $key.": ".$value."\n");
         }
     }

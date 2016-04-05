@@ -1,3 +1,11 @@
+*
+*/
+
+!admin/*
+!.openshift/*
+!README.md
+!LICENSE
+
 admin/_/lib
 admin/_/composer
 admin/.env
