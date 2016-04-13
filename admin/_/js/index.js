@@ -84,6 +84,17 @@ $('#create-modal').on('show.bs.modal', function(e){
                         showUpload: false
                     });
 
+                }else if(key=="sections"){
+                    $.each(value,function(section,content){
+                        $('#create-modal .modal-body').prepend(
+                            '<div class="form-group front-matter">'+
+                                '<label class="col-md-1 control-label" for="title">'+section+'</label>'+
+                                '<div class="col-md-11">'+
+                                    '<input id="'+section+'" required name="'+section+'" class="form-control input-md" type="text">'+
+                                '</div>'+
+                            '</div>'
+                        );
+                    });
                 }else{
 
                     $('#create-modal .modal-body').prepend(
@@ -141,6 +152,17 @@ $('#markdown-modal').on('show.bs.modal', function(e){
                         showUpload: false
                     });
 
+                }else if(key=="sections"){
+                    $.each(value,function(section,content){
+                        $('#markdown-modal .modal-body').prepend(
+                            '<div class="form-group front-matter">'+
+                                '<label class="col-md-1 control-label" for="title">'+section+'</label>'+
+                                '<div class="col-md-11">'+
+                                    '<textarea id="'+section+'" matter-type="section" name="'+section+'" required class="form-control">'+content+'</textarea>'+
+                                '</div>'+
+                            '</div>'
+                        );
+                    });
                 }else{
 
                     $('#markdown-modal .modal-body').prepend(
