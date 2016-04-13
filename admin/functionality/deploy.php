@@ -5,7 +5,7 @@
 
     if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
       $bash_install_dir = getenv('BASH_INSTALL_DIR');
-      $deploy_command = $bash_install_dir . ' script.sh';
+      $deploy_command = 'cd ..\jekyll-cms && jekyll build && XCOPY _site\* ..\.. /s /i && rmdir /S /Q _site';
       echo $deploy_command;
       shell_exec($deploy_command);
     } else if (null !== OPENSHIFT_MYSQL_DB_HOST) {
