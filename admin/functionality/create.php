@@ -10,13 +10,23 @@
 
     $markdown = fopen($path_parts['dirname']."/".$filename, "w");
 
+    $sections=[];
+
     fwrite($markdown, "---\n");
     foreach($_POST as $key => $value){
-        if((strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
+        if((strcmp(substr($key, 0, strlen("section_")),"section_")==0)){
+            $section_key = substr($key, strlen("section_"));
+            $sections[$section_key]=$value;
+        }else if((strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
             fwrite($markdown, $key.": ".$value."\n");
         }
     }
 
+    fwrite($markdown, "sections:"."\n");
+    foreach($sections as $section_key => $section_value){
+        fwrite($markdown, "    ".$section_key.": ".$section_value."\n");
+    }
+    
     if(isset($_FILES["image"])){
         move_uploaded_file($_FILES["image"]["tmp_name"],
         JEKYLL_ROOT."assets/img/".$_FILES["image"]["name"]);
