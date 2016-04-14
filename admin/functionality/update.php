@@ -4,11 +4,21 @@
     $filepath=$_POST['filepath'];
     $markdown = fopen("$filepath", "w");
 
+    $sections=[];
+
     fwrite($markdown, "---\n");
     foreach($_POST as $key => $value){
-        if((strcmp($key,'current-image')!=0) && (strcmp($key,'image')!=0) && (strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
+        if((strcmp(substr($key, 0, strlen("section_")),"section_")==0)){
+            $section_key = substr($key, strlen("section_"));
+            $sections[$section_key]=$value;
+        }else if((strcmp($key,'current-image')!=0) && (strcmp($key,'image')!=0) && (strcmp($key,'filepath')!=0) && (strcmp($key,'content')!=0)){
             fwrite($markdown, $key.": ".$value."\n");
         }
+    }
+
+    fwrite($markdown, "sections:"."\n");
+    foreach($sections as $section_key => $section_value){
+        fwrite($markdown, "    ".$section_key.": ".$section_value."\n");
     }
 
     if(isset($_FILES["image"])){
